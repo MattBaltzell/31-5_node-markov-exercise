@@ -2,10 +2,14 @@
   "name": "markov",
   "version": "1.0.0",
   "description": "",
-  "main": "markov.js",
+  "main": "makeText.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "matt baltzell",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^4.1.2"
+  }
 }

@@ -1,3 +1,5 @@
+
+
 /** Textual markov chain generator */
 
 class MarkovMachine {
@@ -27,22 +29,33 @@ class MarkovMachine {
       }
     }
 
-    this.chains = chains;
+    return this.chains = chains;
   }
 
   /** return random text from chains */
 
-  makeText(numWords = 100) {
+  makeText(numWords = 200) {
     // TODO
+    
     let textArr = [];
+    let keys = Array.from(this.chains.keys())
+    let key = MarkovMachine.getRandomFromArr(keys)
 
-    // FINISH THIS!
-    for (let i = 0; i < numWords; i++) {}
-    //
+    while (textArr.length < numWords && key !== null) {
+      textArr.push(key);
+      key = MarkovMachine.getRandomFromArr(this.chains.get(key));
+    }
 
     return textArr.join(' ');
   }
+
+  static getRandomFromArr(arr){
+    const index = Math.floor(Math.random() * arr.length)
+    return arr[index]
+  }
+  
 }
+
 
 module.exports = {
   MarkovMachine,
