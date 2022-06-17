@@ -12,14 +12,14 @@ const process = require('process')
 
 function generateText(text){
     let mm = new markov.MarkovMachine(text)
-    console.log(mm.makeText())
+    console.log(chalk.yellow(mm.makeText()))
 }
 
 // Read file and generate text
 function makeTextFromFile(path){
     fs.readFile(path, 'utf8',function(err, data){
         if (err) {
-            console.error(`Cannot read file: ${path}: ${err}`);
+            console.error(chalk.red.inverse(`Cannot read file: ${path}: ${err}`));
             process.exit(1);
           } else {
             generateText(data);
@@ -32,7 +32,7 @@ async function makeTextFromURL(path){
         const res = await axios.get(path);
         generateText(res.data);
       } catch (error) {
-        console.error(`Cannot read URL: ${path}: ${error}`);
+        console.error(chalk.red.inverse(`Cannot read URL: ${path}: ${error}`));
         process.exit(1);
       }
 }
